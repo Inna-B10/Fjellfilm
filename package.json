@@ -1,0 +1,25 @@
+{
+	"name": "fjellfilm",
+	"version": "1.0.0",
+	"description": "Movie Review API",
+	"license": "ISC",
+	"author": "",
+	"type": "module",
+	"sideEffects": false,
+	"main": "src/main.js",
+	"imports": {
+		"#utils/*": "./src/utils/*"
+	},
+	"scripts": {
+		"start": "node main",
+		"dev": "nodemon main"
+	},
+	"dependencies": {
+		"cors": "^2.8.5",
+		"dotenv": "^17.2.3",
+		"express": "^5.1.0"
+	},
+	"devDependencies": {
+		"nodemon": "^3.1.10"
+	}
+}
