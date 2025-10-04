@@ -1,9 +1,9 @@
 import { isDev } from '#utils/isDev.js'
-import { projectRoot } from '#utils/path_resolver.js'
+import { srcDir } from '#utils/path_resolver.js'
 import Database from 'better-sqlite3'
 import path from 'path'
 
-const dbPath = path.join(projectRoot, 'database', 'fjellfilm.db')
+const dbPath = path.join(srcDir, 'database', 'fjellfilm.db')
 
 export const db = new Database(dbPath, {
 	verbose: isDev ? console.log : undefined,

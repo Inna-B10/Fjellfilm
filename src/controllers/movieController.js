@@ -23,7 +23,7 @@ export const handleGetMovieByID = (req, res) => {
 	try {
 		const data = getMovieByID(movieId)
 		if (!data) {
-			return res.status(404).json({ error: `Movie not found!` })
+			return res.status(404).json({ error: 'Movie not found!' })
 		}
 		res.json(data)
 	} catch (err) {
