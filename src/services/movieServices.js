@@ -14,8 +14,6 @@ export function getMovieByID(id) {
 
 //* ------------------------- Get Review By Movie ID ------------------------- */
 export function getReviewsByMovieID(id) {
-	const stmt = db.prepare(
-		'SELECT reviewAuthor, reviewText, movies.title AS title FROM reviews INNER JOIN movies ON reviews.movie_id = movies.movie_id WHERE reviews.movie_id = ?'
-	)
+	const stmt = db.prepare('SELECT reviewAuthor, reviewText FROM reviews WHERE movie_id = ?')
 	return stmt.all(id)
 }
