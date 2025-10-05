@@ -10,6 +10,13 @@ export const app = express()
 //* ------------------------------- Middlewares ------------------------------ */
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+// if SyntaxError in JSON format
+app.use((err, req, res, next) => {
+	if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+		return res.status(400).json({ error: 'Invalid JSON format' })
+	}
+	next()
+})
 app.use(express.static(path.join(srcDir, '/public')))
 
 //* --------------------------------- Routes --------------------------------- */

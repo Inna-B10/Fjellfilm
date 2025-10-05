@@ -31,3 +31,21 @@ export function getReviewsByMovieID(id) {
 	const stmt = db.prepare('SELECT reviewAuthor, reviewText FROM reviews WHERE movie_id = ?')
 	return stmt.all(id)
 }
+
+//* ------------------------------ Add New Movie ----------------------------- */
+export function addNewMovie(movie) {
+	const stmt = db.prepare(`
+    INSERT INTO movies (title, director, releaseYear, genre)
+    VALUES (?, ?, ?, ?)
+    `)
+	return stmt.run(movie.title, movie.director, movie.releaseYear, movie.genre)
+}
+
+//* ------------------------------- Add Review ------------------------------- */
+export function addNewReview(movieId, name, message, rating) {
+	const stmt = db.prepare(`
+    INSERT INTO reviews (movie_id, reviewAuthor, reviewText, rating)
+    VALUES (?, ?, ?, ?)
+    `)
+	return stmt.run(movieId, name, message, rating)
+}
