@@ -2,14 +2,28 @@ import { db } from '#database/database.js'
 
 //* ----------------------------- Get All Movies ----------------------------- */
 export function getAllMovies() {
-	const stmt = db.prepare('SELECT * FROM movies')
-	return stmt.all()
+	const rows = db.prepare('SELECT * FROM movies').all()
+
+	if (!rows) return null
+
+	return rows.map(row => ({
+		...row,
+		director: row.director ? row.director.split(',').map(d => d.trim()) : [],
+		genre: row.genre ? row.genre.split(',').map(g => g.trim()) : [],
+	}))
 }
 
 //* ----------------------------- Get Movie By ID ---------------------------- */
 export function getMovieByID(id) {
-	const stmt = db.prepare('SELECT * FROM movies WHERE movie_id = ?')
-	return stmt.get(id)
+	const row = db.prepare('SELECT * FROM movies WHERE movie_id = ?').get(id)
+
+	if (!row) return null
+
+	return {
+		...row,
+		director: row.director ? row.director.split(',').map(d => d.trim()) : [],
+		genre: row.genre ? row.genre.split(',').map(g => g.trim()) : [],
+	}
 }
 
 //* ------------------------- Get Review By Movie ID ------------------------- */

@@ -1,3 +1,4 @@
+import { srcDir } from '#utils/path_resolver.js'
 import { Router } from 'express'
 import path from 'path'
 
