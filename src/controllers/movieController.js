@@ -7,7 +7,7 @@ export const handleGetAllMovies = (req, res) => {
 		const data = getAllMovies()
 		res.json(data)
 	} catch (err) {
-		isDev && console.error('Database error: ', err.message)
+		isDev() && console.error('Database error: ', err.message)
 		res.status(500).json({ error: 'Failed to fetch movies' })
 	}
 }
@@ -27,7 +27,7 @@ export const handleGetMovieByID = (req, res) => {
 		}
 		res.json(data)
 	} catch (err) {
-		isDev && console.error('Database error: ', err.message)
+		isDev() && console.error('Database error: ', err.message)
 
 		res.status(500).json({ error: `Failed to fetch movie with id=${movieId}` })
 	}
@@ -52,7 +52,7 @@ export const handleGetReviewsByMovieID = (req, res) => {
 
 		res.json({ movieTitle: movie.title, reviews })
 	} catch (err) {
-		isDev && console.error('Database error: ', err.message)
+		isDev() && console.error('Database error: ', err.message)
 		res.status(500).json({ error: `Failed to fetch reviews for movie with id=${movieId}` })
 	}
 }
@@ -110,7 +110,7 @@ export const handleAddNewMovie = (req, res) => {
 			},
 		})
 	} catch (err) {
-		isDev && console.error('Database error: ', err.message)
+		isDev() && console.error('Database error: ', err.message)
 
 		res.status(500).json({ error: `Failed to add a new movie` })
 	}
@@ -167,7 +167,7 @@ export const handleAddNewReview = (req, res) => {
 				},
 			})
 	} catch (err) {
-		isDev && console.error('Database error: ', err.message)
+		isDev() && console.error('Database error: ', err.message)
 
 		res.status(500).json({ error: `Failed to add a new review` })
 	}
@@ -247,7 +247,7 @@ export const handleUpdateMovie = (req, res) => {
 			},
 		})
 	} catch (err) {
-		isDev && console.error('Database error: ', err.message)
+		isDev() && console.error('Database error: ', err.message)
 
 		res.status(500).json({ error: `Failed to update movie` })
 	}
