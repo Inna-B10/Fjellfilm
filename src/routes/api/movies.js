@@ -1,13 +1,5 @@
-import {
-	handleAddNewMovie,
-	handleAddNewReview,
-	handleDeleteMovie,
-	handleDeleteReview,
-	handleGetAllMovies,
-	handleGetMovieByID,
-	handleGetReviewsByMovieID,
-	handleUpdateMovie,
-} from '#controllers/movieController.js'
+import { handleAddNewMovie, handleDeleteMovie, handleGetAllMovies, handleGetMovieByID, handleUpdateMovie } from '#controllers/movieController.js'
+import { handleAddNewReview, handleDeleteReview, handleGetReviewsByMovieID } from '#controllers/reviewController.js'
 import { Router } from 'express'
 
 export const moviesRouter = Router()
