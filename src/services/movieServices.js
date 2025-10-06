@@ -57,3 +57,19 @@ export function updateMovie(movieId, movie) {
     `)
 	return stmt.run(movie.title, movie.director, movie.releaseYear, movie.genre, movieId)
 }
+
+//* --------------------------- Delete Review By Id -------------------------- */
+export function deleteReview(reviewId, movieId) {
+	const stmt = db.prepare(`
+		DELETE FROM reviews WHERE review_id = ? AND movie_id = ?
+		`)
+	return stmt.run(reviewId, movieId)
+}
+
+//* --------------------------- Delete Movie By Id --------------------------- */
+export function deleteMovie(movieId) {
+	const stmt = db.prepare(`
+		DELETE FROM movies WHERE movie_id = ?
+		`)
+	return stmt.run(movieId)
+}

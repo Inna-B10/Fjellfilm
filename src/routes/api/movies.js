@@ -1,6 +1,8 @@
 import {
 	handleAddNewMovie,
 	handleAddNewReview,
+	handleDeleteMovie,
+	handleDeleteReview,
 	handleGetAllMovies,
 	handleGetMovieByID,
 	handleGetReviewsByMovieID,
@@ -16,3 +18,5 @@ moviesRouter.get('/:id/reviews', handleGetReviewsByMovieID)
 moviesRouter.post('/', handleAddNewMovie)
 moviesRouter.post('/:id/reviews', handleAddNewReview)
 moviesRouter.put('/:id', handleUpdateMovie)
+moviesRouter.delete('/:id/reviews/:reviewId', handleDeleteReview)
+moviesRouter.delete('/:id', handleDeleteMovie)

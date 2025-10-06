@@ -1,4 +1,4 @@
-import { addNewMovie, addNewReview, getAllMovies, getMovieByID, getReviewsByMovieID, updateMovie } from '#services/movieServices.js'
+import { addNewMovie, addNewReview, deleteMovie, deleteReview, getAllMovies, getMovieByID, getReviewsByMovieID, updateMovie } from '#services/movieServices.js'
 import { isDev } from '#utils/isDev.js'
 
 //* ----------------------------- Get All Movies ----------------------------- */
@@ -29,7 +29,7 @@ export const handleGetMovieByID = (req, res) => {
 	} catch (err) {
 		isDev() && console.error('Database error: ', err.message)
 
-		res.status(500).json({ error: `Failed to fetch movie with id=${movieId}` })
+		res.status(500).json({ error: `Failed to fetch movie with movie_id=${movieId}` })
 	}
 }
 
@@ -53,7 +53,7 @@ export const handleGetReviewsByMovieID = (req, res) => {
 		res.json({ movieTitle: movie.title, reviews })
 	} catch (err) {
 		isDev() && console.error('Database error: ', err.message)
-		res.status(500).json({ error: `Failed to fetch reviews for movie with id=${movieId}` })
+		res.status(500).json({ error: `Failed to fetch reviews for movie with movie_id=${movieId}` })
 	}
 }
 
@@ -112,7 +112,7 @@ export const handleAddNewMovie = (req, res) => {
 	} catch (err) {
 		isDev() && console.error('Database error: ', err.message)
 
-		res.status(500).json({ error: `Failed to add a new movie` })
+		res.status(500).json({ error: 'Failed to add a new movie' })
 	}
 }
 
@@ -169,7 +169,7 @@ export const handleAddNewReview = (req, res) => {
 	} catch (err) {
 		isDev() && console.error('Database error: ', err.message)
 
-		res.status(500).json({ error: `Failed to add a new review` })
+		res.status(500).json({ error: 'Failed to add a new review' })
 	}
 }
 
@@ -249,6 +249,49 @@ export const handleUpdateMovie = (req, res) => {
 	} catch (err) {
 		isDev() && console.error('Database error: ', err.message)
 
-		res.status(500).json({ error: `Failed to update movie` })
+		res.status(500).json({ error: `Failed to update movie with movie_id=${movieId}` })
+	}
+}
+
+//* --------------------------- Delete Review By Id -------------------------- */
+export const handleDeleteReview = (req, res) => {
+	const reviewId = parseInt(req.params.reviewId, 10)
+	const movieId = parseInt(req.params.id, 10)
+
+	if (isNaN(reviewId) || isNaN(movieId)) {
+		return res.status(400).json({ error: 'Invalid or missing movie or review ID' })
+	}
+
+	try {
+		const result = deleteReview(reviewId, movieId)
+		if (result.changes === 0) {
+			return res.status(404).json({ error: 'Review not found' })
+		}
+		res.status(204).end()
+	} catch (err) {
+		isDev() && console.error('Database error: ', err.message)
+
+		res.status(500).json({ error: `Failed to delete review with review_id=${reviewId}` })
+	}
+}
+
+//* --------------------------- Delete Movie By Id --------------------------- */
+export const handleDeleteMovie = (req, res) => {
+	const movieId = parseInt(req.params.id, 10)
+
+	if (isNaN(movieId)) {
+		return res.status(400).json({ error: 'Invalid or missing movie ID' })
+	}
+
+	try {
+		const result = deleteMovie(movieId)
+		if (result.changes === 0) {
+			return res.status(404).json({ error: 'Movie not found' })
+		}
+		res.status(204).end()
+	} catch (err) {
+		isDev() && console.error('Database error: ', err.message)
+
+		res.status(500).json({ error: `Failed to delete movie with movie_id=${movieId}` })
 	}
 }

@@ -41,7 +41,7 @@ db.prepare(
   reviewAuthor TEXT NOT NULL,
   reviewText TEXT NOT NULL,
   rating INTEGER NOT NULL,
-  FOREIGN KEY (movie_id) REFERENCES movies(movie_id)
+  FOREIGN KEY (movie_id) REFERENCES movies(movie_id) ON DELETE CASCADE
   )
   `
 ).run()
