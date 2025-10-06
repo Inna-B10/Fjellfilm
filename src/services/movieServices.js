@@ -49,3 +49,11 @@ export function addNewReview(movieId, name, message, rating) {
     `)
 	return stmt.run(movieId, name, message, rating)
 }
+
+//* ------------------------------ Update Movie ------------------------------ */
+export function updateMovie(movieId, movie) {
+	const stmt = db.prepare(`
+    UPDATE movies SET title = ?, director = ?, releaseYear = ?, genre = ? WHERE movie_id = ?
+    `)
+	return stmt.run(movie.title, movie.director, movie.releaseYear, movie.genre, movieId)
+}
