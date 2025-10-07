@@ -6,17 +6,17 @@ import path from 'path'
 const dbPath = path.join(srcDir, 'database', 'fjellfilm.db')
 
 export const db = new Database(dbPath, {
-	verbose: isDev() ? console.log : undefined,
+	verbose: isDev ? console.log : undefined,
 })
 
 // enable foreign keys for THIS connection
 db.pragma('foreign_keys = ON')
 
-if (isDev) {
-	//check if foreign keys is ON
-	const result = db.prepare(`PRAGMA foreign_keys;`).get()
-	console.log('Foreign keys enabled?', result.foreign_keys === 1)
-}
+// if (isDev) {
+// 	//check if foreign keys is ON
+// 	const result = db.prepare(`PRAGMA foreign_keys;`).get()
+// 	console.log('Foreign keys enabled?', result.foreign_keys === 1)
+// }
 
 //* --------------------------------- Tables --------------------------------- */
 db.prepare(
@@ -78,4 +78,4 @@ db.prepare(
 ON movies (genre)`
 ).run()
 
-isDev() && console.log('The DB, tables and indexes have been created.')
+isDev && console.log('The DB, tables and indexes have been created.')

@@ -58,4 +58,4 @@ db.prepare(
 `
 ).run()
 
-isDev() && console.log('Seeding complete')
+isDev && console.log('Seeding complete')

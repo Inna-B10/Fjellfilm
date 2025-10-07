@@ -7,7 +7,7 @@ export const handleGetAllMovies = (req, res) => {
 		const data = getAllMovies()
 		res.json(data)
 	} catch (err) {
-		isDev() && console.error('Database error: ', err.message)
+		isDev && console.error('Database error: ', err.message)
 		res.status(500).json({ error: 'Failed to fetch movies' })
 	}
 }
@@ -27,7 +27,7 @@ export const handleGetMovieByID = (req, res) => {
 		}
 		res.json(data)
 	} catch (err) {
-		isDev() && console.error('Database error: ', err.message)
+		isDev && console.error('Database error: ', err.message)
 
 		res.status(500).json({ error: `Failed to fetch movie with movie_id=${movieId}` })
 	}
@@ -86,7 +86,7 @@ export const handleAddNewMovie = (req, res) => {
 			},
 		})
 	} catch (err) {
-		isDev() && console.error('Database error: ', err.message)
+		isDev && console.error('Database error: ', err.message)
 
 		res.status(500).json({ error: 'Failed to add a new movie' })
 	}
@@ -166,7 +166,7 @@ export const handleUpdateMovie = (req, res) => {
 			},
 		})
 	} catch (err) {
-		isDev() && console.error('Database error: ', err.message)
+		isDev && console.error('Database error: ', err.message)
 
 		res.status(500).json({ error: `Failed to update movie with movie_id=${movieId}` })
 	}
@@ -187,7 +187,7 @@ export const handleDeleteMovie = (req, res) => {
 		}
 		res.status(204).end()
 	} catch (err) {
-		isDev() && console.error('Database error: ', err.message)
+		isDev && console.error('Database error: ', err.message)
 
 		res.status(500).json({ error: `Failed to delete movie with movie_id=${movieId}` })
 	}

@@ -1,8 +1,8 @@
-import { gracefulShutdown } from '#utils/gracefulShutdown.js'
-import dotenv from 'dotenv'
-import { app } from './app.js'
+import '#utils/loadEnv.js' //first load dotenv
 
-dotenv.config()
+import { gracefulShutdown } from '#utils/gracefulShutdown.js'
+
+import { app } from './app.js'
 
 const PORT = process.env.PORT || 4200
 

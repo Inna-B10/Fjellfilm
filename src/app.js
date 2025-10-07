@@ -1,13 +1,23 @@
 import { moviesRouter } from '#routes/api/movies.js'
 import { rootRouter } from '#routes/root.js'
+import { isDev } from '#utils/isDev.js'
 import { srcDir } from '#utils/path_resolver.js'
 import express from 'express'
+import helmet from 'helmet'
 import path from 'path'
 import { errorHandler } from './middleware/errorHandler.js'
+import { apiLimiter } from './middleware/rateLimiter.js'
 
 export const app = express()
+// const isDev = await import('#utils/isDev.js')
 
 //* ------------------------------- Middlewares ------------------------------ */
+//rate limiting
+if (!isDev) {
+	app.use('/api/', apiLimiter)
+}
+app.use(helmet())
+
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 // if SyntaxError in JSON format

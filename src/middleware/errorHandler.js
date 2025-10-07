@@ -23,7 +23,7 @@ export async function errorHandler(err, req, res, next) {
 	}
 
 	// log in console
-	isDev() && console.error(logMessage)
+	isDev && console.error(logMessage)
 
 	//response to client
 	res.status(500).json({ error: 'Internal Server Error' })

@@ -53,7 +53,7 @@ export const handleAddNewReview = (req, res) => {
 				},
 			})
 	} catch (err) {
-		isDev() && console.error('Database error: ', err.message)
+		isDev && console.error('Database error: ', err.message)
 
 		res.status(500).json({ error: 'Failed to add a new review' })
 	}
@@ -78,7 +78,7 @@ export const handleGetReviewsByMovieID = (req, res) => {
 
 		res.json({ movieTitle: movie.title, reviews })
 	} catch (err) {
-		isDev() && console.error('Database error: ', err.message)
+		isDev && console.error('Database error: ', err.message)
 		res.status(500).json({ error: `Failed to fetch reviews for movie with movie_id=${movieId}` })
 	}
 }
@@ -99,7 +99,7 @@ export const handleDeleteReview = (req, res) => {
 		}
 		res.status(204).end()
 	} catch (err) {
-		isDev() && console.error('Database error: ', err.message)
+		isDev && console.error('Database error: ', err.message)
 
 		res.status(500).json({ error: `Failed to delete review with review_id=${reviewId}` })
 	}
