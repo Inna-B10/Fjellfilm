@@ -1,6 +1,31 @@
-/node_modules
-/logs
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
+# Logs
+logs/
+*.log
+
+# Env
 .env
 
-Oppgave.md
+# Database
+src/database/fjellfilm.db
+src/database/*.sqbpro
+
+# Docker
+*.pid
+.dockerignore
+
+# PM2
+pids/
+*.pid
+*.seed
+
+# OS / Editor junk
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
