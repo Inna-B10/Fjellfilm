@@ -91,6 +91,7 @@ ON movies (genre)`
 
 isDev && console.log('The database and tables are ready for use.')
 
+//seed data
 if (!tablesExist) {
 	isDev && console.log('The database was just created. Running seed.js')
 	seedDatabase()
