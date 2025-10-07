@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "fjellfilm-api-collection",
+		"name": "FjellFilm API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4200/api/movies",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "4200",
+					"path": ["api", "movies"]
+				}
+			}
+		},
+		{
+			"name": "Get Movie By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4200/api/movies/6",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "4200",
+					"path": ["api", "movies", "6"]
+				}
+			}
+		},
+		{
+			"name": "Get Reviews By Movie ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4200/api/movies/6/reviews",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "4200",
+					"path": ["api", "movies", "6", "reviews"]
+				}
+			}
+		},
+		{
+			"name": "Add New Movie",
+			"request": {
+				"method": "POST",
+				"header": [{ "key": "Content-Type", "value": "application/json" }],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"No Mercy\",\n  \"director\": \"Richard Pearce\",\n  \"releaseYear\": 1985,\n  \"genre\": [\"Drama\", \"Action\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4200/api/movies",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "4200",
+					"path": ["api", "movies"]
+				}
+			}
+		},
+		{
+			"name": "Update Movie",
+			"request": {
+				"method": "PUT",
+				"header": [{ "key": "Content-Type", "value": "application/json" }],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"No Mercy\",\n  \"director\": \"Richard Pearce\",\n  \"releaseYear\": 1986,\n  \"genre\": [\"Drama\", \"Action\", \"Thriller\"]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4200/api/movies/11",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "4200",
+					"path": ["api", "movies", "11"]
+				}
+			}
+		},
+		{
+			"name": "Add Review",
+			"request": {
+				"method": "POST",
+				"header": [{ "key": "Content-Type", "value": "application/json" }],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Avata\",\n  \"message\": \"Could not care any less about this movie if I tried. Horrible, boring, and a complete waste of time.\",\n  \"rating\": 2\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4200/api/movies/11/reviews",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "4200",
+					"path": ["api", "movies", "11", "reviews"]
+				}
+			}
+		},
+		{
+			"name": "Add Another Review",
+			"request": {
+				"method": "POST",
+				"header": [{ "key": "Content-Type", "value": "application/json" }],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"John\",\n  \"message\": \"I've seen worse, but this isn't a good movie. Basinger's hotness is the only highlight.\",\n  \"rating\": 3\n}"
+				},
+				"url": {
+					"raw": "http://localhost:4200/api/movies/11/reviews",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "4200",
+					"path": ["api", "movies", "11", "reviews"]
+				}
+			}
+		},
+		{
+			"name": "Delete Review",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4200/api/movies/11/reviews/25",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "4200",
+					"path": ["api", "movies", "11", "reviews", "25"]
+				}
+			}
+		},
+		{
+			"name": "Delete Movie",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4200/api/movies/11",
+					"protocol": "http",
+					"host": ["localhost"],
+					"port": "4200",
+					"path": ["api", "movies", "11"]
+				}
+			}
+		}
+	]
+}
