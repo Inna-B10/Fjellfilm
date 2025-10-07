@@ -2,11 +2,12 @@ import { isDev } from '#utils/isDev.js'
 import { srcDir } from '#utils/path_resolver.js'
 import Database from 'better-sqlite3'
 import path from 'path'
+import { seedDatabase } from './seed.js'
 
 const dbPath = path.join(srcDir, 'database', 'fjellfilm.db')
 
 export const db = new Database(dbPath, {
-	verbose: isDev ? console.log : undefined,
+	// verbose: isDev ? console.log : undefined,
 })
 
 // enable foreign keys for THIS connection
@@ -17,6 +18,16 @@ db.pragma('foreign_keys = ON')
 // 	const result = db.prepare(`PRAGMA foreign_keys;`).get()
 // 	console.log('Foreign keys enabled?', result.foreign_keys === 1)
 // }
+
+//check if tables exist
+const tables = db
+	.prepare(
+		`
+  SELECT name FROM sqlite_master WHERE type='table' AND name IN ('movies', 'reviews')`
+	)
+	.all()
+
+const tablesExist = tables.length > 0
 
 //* --------------------------------- Tables --------------------------------- */
 db.prepare(
@@ -78,4 +89,9 @@ db.prepare(
 ON movies (genre)`
 ).run()
 
-isDev && console.log('The DB, tables and indexes have been created.')
+isDev && console.log('The database and tables are ready for use.')
+
+if (!tablesExist) {
+	isDev && console.log('The database was just created. Running seed.js')
+	seedDatabase()
+}

@@ -10,5 +10,10 @@ app.listen(PORT, () => {
 	console.log(`Server running on port ${PORT}`)
 })
 
-process.on('SIGINT', gracefulShutdown)
-process.on('SIGTERM', gracefulShutdown)
+// Signals
+process.on('SIGINT', () => gracefulShutdown())
+process.on('SIGTERM', () => gracefulShutdown())
+
+// Unexpected errors
+process.on('uncaughtException', err => gracefulShutdown(err))
+process.on('unhandledRejection', err => gracefulShutdown(err))

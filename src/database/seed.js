@@ -1,9 +1,10 @@
 import { isDev } from '#utils/isDev.js'
-import { db } from './database/database.js'
+import { db } from './database.js'
 
-// Movies
-db.prepare(
-	`
+export function seedDatabase() {
+	// Movies
+	db.prepare(
+		`
   INSERT INTO movies (title, director, releaseYear, genre) VALUES
   ('Inception', 'Christopher Nolan', 2010, 'Sci-Fi, Thriller'),
   ('The Godfather', 'Francis Ford Coppola', 1972, 'Crime, Drama'),
@@ -16,11 +17,11 @@ db.prepare(
   ('The Matrix', 'Lana Wachowski, Lilly Wachowski', 1999, 'Sci-Fi, Action'),
   ('Gladiator', 'Ridley Scott', 2000, 'Action, Drama');
 `
-).run()
+	).run()
 
-// Reviews
-db.prepare(
-	`
+	// Reviews
+	db.prepare(
+		`
   INSERT INTO reviews (movie_id, reviewAuthor, reviewText, rating) VALUES
   (1, 'Anna', 'Visually impressive but a bit confusing.', 4),
   (1, 'Lars', 'Too complex for my taste.', 3),
@@ -56,6 +57,7 @@ db.prepare(
   (10, 'Fredrik', 'Exciting but not my favorite.', 3),
   (10, 'Lars', 'Epic battles and story.', 4);
 `
-).run()
+	).run()
 
-isDev && console.log('Seeding complete')
+	isDev && console.log('Seeding completed.')
+}

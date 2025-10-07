@@ -1,15 +1,20 @@
 import { db } from '#database/database.js'
 import { isDev } from './isDev.js'
 
-export const gracefulShutdown = () => {
-	isDev && console.log('Shutting down...')
+export const gracefulShutdown = (error = null) => {
+	if (error) {
+		console.error('Unexpected error during shutdown: ', error)
+		process.exitCode = 1
+	} else {
+		process.exitCode = 0
+	}
 
 	try {
 		db.close()
 		isDev && console.log('Database connection closed.')
-		process.exit(0)
 	} catch (err) {
 		console.error('Failed to close database connection', err.message)
-		process.exit(1)
 	}
+
+	isDev && console.log(`Graceful shutdown completed with exitCode=${process.exitCode}`)
 }
