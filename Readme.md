@@ -5,7 +5,6 @@ The project supports basic CRUD operations for movies and nested CRUD for movie 
 
 <details>
 <summary><h2 style="display:inline" >📦 Tech Stack</h2></summary>
-<br />
 
 | **Category** | **Tool**                         |
 | ------------ | -------------------------------- |
@@ -15,8 +14,6 @@ The project supports basic CRUD operations for movies and nested CRUD for movie 
 | Environment  | dotenv                           |
 | Middleware   | Helmet, CORS, Express Rate Limit |
 | Dev Tool     | Nodemon                          |
-
-<br />
 
 - **Used packages:**
 
@@ -31,14 +28,12 @@ npm install express-rate-limit
 npm install helmet
 ```
 
+---
+
 </details>
-<br />
-<br />
+
 <details>
 <summary><h2 style="display:inline" >⚙️ Installation & Setup</h2></summary>
-<br />
-
-⚙️ Installation & Setup
 
 ```js
 // Install dependencies
@@ -53,9 +48,34 @@ npm run dev
 
   - If the tables were just created (i.e., the database is new), `seed.js` is automatically run to populate initial data.
 
+---
+
 </details>
-<br />
-<br />
+
+<details>
+<summary><h2 style="display:inline" >🚀 Deployment</h2></summary>
+
+The project is deployed on **Render** using a custom **Dockerfile**.
+
+- **Live API**: https://fjellfilm.onrender.com/api/movies
+
+Render automatically builds and runs the app using the `Dockerfile` provided in the repository.
+The image is based on a lightweight Node.js environment (`node:20-alpine`) and runs the server via:
+
+`CMD ["node", "src/main.js"]`
+
+No manual configuration is required — the container starts the Express server automatically when deployed.
+If the database is created for the first time, it will be automatically seeded with initial data using `seed.js`.
+
+**Example usage:**
+
+**GET** `https://fjellfilm.onrender.com/api/movies`  
+returns a list of all movies stored in the database.
+
+---
+
+</details>
+
 <details>
 <summary><h2 style="display:inline" >🧩 API Endpoints</h2></summary>
 
@@ -101,8 +121,6 @@ npm run dev
 - Delete movie: **DELETE** `http://localhost:4200/api/movies/11`  
   ( including cascading deletion of reviews related to a movie )
 
-<br/>
-
 ### 📝 Reviews
 
 | Method | Endpoint                          | Description                          |
@@ -135,12 +153,12 @@ npm run dev
 
 - Delete review: **DELETE** `DELETE http://localhost:4200/api/movies/11/reviews/25`
 
+---
+
 </details>
-<br />
-<br />
+
 <details>
 <summary><h2 style="display:inline" >🧠 Features</h2></summary>
-<br />
 
 - Full CRUD operations for movies and reviews
 - Foreign key constraints with cascading delete
@@ -148,9 +166,7 @@ npm run dev
 - Input validation and error handling
 - Rate limiting and security headers
 - Config-based environment control (`NODE_ENV`, `.env`)
-
 </details>
-<br />
 
 ### 👩‍💻 Author
 
