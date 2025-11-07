@@ -1,23 +1,42 @@
-# 🎬 FjellFilm - Movie Review API
+# Project name: 🎬 FjellFilm
+
+### Project Goal:
+
+Velkommen til din første dag som backend-utvikler i (det fiktive) filmselskapet Fjellfilm. Du har fått et viktig oppdrag: Lag et Movie Review API slik at både filmelskere og kritikere kan finne, dele og oppdatere filmanmeldelser.
+
+Mål:
+
+- Sett opp et nytt Node.js + Express-prosjekt
+- Lag en database som inneholder to tabeller: Movies og Reviews.  
+  Bruk relevante datatyper for kolonnene, og sørg for å koble Reviews opp mot Movies. (Relasjonsbygging)
+- Lag CRUD-endepunkter (Create, Read, Update, Delete)
+- Lag en README.md som beskriver API-et med eksempler
+
+> [!IMPORTANT]  
+> Viktig: Implementer validering og bruk riktige statuskoder.
+
+## **About**
+
+[<img src="preview.png" height="250" align="right"/>](preview.png)
 
 A simple RESTful API for managing movies and reviews, built with **Express.js** and **SQLite** (Better-SQLite3).  
-The project supports basic CRUD operations for movies and nested CRUD for movie reviews.
+The project supports basic **CRUD** operations for movies and nested CRUD for movie reviews.
 
-<details>
-<summary><h2 style="display:inline" >📦 Tech Stack</h2></summary>
+### 🧩 Tech Stack
 
-| **Category** | **Tool**                         |
-| ------------ | -------------------------------- |
-| Runtime      | Node.js                          |
-| Framework    | Express.js                       |
-| Database     | SQLite (via Better-SQLite3)      |
-| Environment  | dotenv                           |
-| Middleware   | Helmet, CORS, Express Rate Limit |
-| Dev Tool     | Nodemon                          |
+![JavaScript](https://img.shields.io/badge/JavaScript-424242?&logo=javascript&logoColor=F7DF1E)
+![Node.js](https://img.shields.io/badge/Node.js-424242?&logo=nodedotjs&logoColor=339933)
+![express](https://img.shields.io/badge/express_5.1.0-424242?&logo=express&logoColor=white)
+![better-sqlite3](https://img.shields.io/badge/better--sqlite3_12.4.1-424242?)
+![cors](https://img.shields.io/badge/cors_2.8.5-424242?)
+![dotenv](https://img.shields.io/badge/dotenv_17.2.3-424242?)
+![helmet](https://img.shields.io/badge/helmet_8.1.0-424242?)
+![express-rate-limit](https://img.shields.io/badge/express--rate--limit_8.1.0-424242?)
 
-- **Used packages:**
+<details style="border:1px solid #d4d4d4; border-radius:2px; padding:1rem;">
+<summary><h4 style="display:inline; padding-left:6px;">📦 Dependencies:</h4></summary>
 
-```js
+```bash
 npm install express
 npm install nodemon -D
 npm install nodemon -g
@@ -28,12 +47,24 @@ npm install express-rate-limit
 npm install helmet
 ```
 
----
-
 </details>
 
+### ✨ Features
+
+- Full CRUD operations for movies and reviews
+- Foreign key constraints with cascading delete
+- For just created DB automatically seeding of initial data
+- Input validation and error handling
+- Rate limiting and security headers
+- Config-based environment control (`NODE_ENV`, `.env`)
+
+### 👩‍💻 Author
+
+**FjellFilm API** – created for a course project.  
+Clean code, pragmatic architecture, and a tiny sprinkle of Scandinavian drama.
+
 <details>
-<summary><h2 style="display:inline" >⚙️ Installation & Setup</h2></summary>
+<summary><h3 style="display:inline" >⚙️ Installation & Setup</h3></summary>
 
 ```js
 // Install dependencies
@@ -53,7 +84,7 @@ npm run dev
 </details>
 
 <details>
-<summary><h2 style="display:inline" >🚀 Deployment</h2></summary>
+<summary><h3 style="display:inline" >🚀 Deployment</h3></summary>
 
 The project is deployed on **Render** using a custom **Dockerfile**.
 
@@ -75,9 +106,8 @@ returns a list of all movies stored in the database.
 ---
 
 </details>
-
 <details>
-<summary><h2 style="display:inline" >🧩 API Endpoints</h2></summary>
+<summary><h3 style="display:inline" >🗃️ API Endpoints</h3></summary>
 
 ### 👉 [Api_collection_for_Postman](Api_collection_for_Postman.json)
 
@@ -156,19 +186,3 @@ returns a list of all movies stored in the database.
 ---
 
 </details>
-
-<details>
-<summary><h2 style="display:inline" >🧠 Features</h2></summary>
-
-- Full CRUD operations for movies and reviews
-- Foreign key constraints with cascading delete
-- For just created DB automatically seeding of initial data
-- Input validation and error handling
-- Rate limiting and security headers
-- Config-based environment control (`NODE_ENV`, `.env`)
-</details>
-
-### 👩‍💻 Author
-
-FjellFilm API – created for a course project.  
-Clean code, pragmatic architecture, and a tiny sprinkle of Scandinavian drama.

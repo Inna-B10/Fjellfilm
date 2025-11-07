@@ -53,12 +53,18 @@ export const handleAddNewMovie = (req, res) => {
 			director = [director]
 		}
 		director = director.map(d => String(d).trim()).filter(d => d.length > 0)
+		if (director.length === 0) {
+			return res.status(400).json({ error: 'At least one director is required' })
+		}
 
 		// Genre: normalize to array
 		if (!Array.isArray(genre)) {
 			genre = [genre]
 		}
 		genre = genre.map(g => String(g).trim()).filter(g => g.length > 0)
+		if (genre.length === 0) {
+			return res.status(400).json({ error: 'At least one genre is required' })
+		}
 
 		// Release year validation
 		releaseYear = parseInt(releaseYear, 10)
