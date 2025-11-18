@@ -15,26 +15,40 @@ Mål:
 > [!IMPORTANT]  
 > Viktig: Implementer validering og bruk riktige statuskoder.
 
-## **About**
+## 💎 Description
 
-[<img src="preview.png" height="250" align="right"/>](preview.png)
+[<img src="preview.png" height="250" align="right" style="margin-left:20px" />](preview.png)
 
 A simple RESTful API for managing movies and reviews, built with **Express.js** and **SQLite** (Better-SQLite3).  
-The project supports basic **CRUD** operations for movies and nested CRUD for movie reviews.
+The project supports basic **CRUD** operations for movies and nested CRUD for movie reviews, deployed on **Render** using a custom **Dockerfile**.
+
+### ✨ Features
+
+- Full CRUD operations for movies and reviews
+- Foreign key constraints with cascading delete
+- For just created DB automatically seeding of initial data
+- Input validation and error handling
+- Rate limiting and security headers
+- Config-based environment control (`NODE_ENV`, `.env`)
+
+### 🚀 Live API: https://fjellfilm.onrender.com/api/movies
 
 ### 🧩 Tech Stack
 
-![JavaScript](https://img.shields.io/badge/JavaScript-424242?&logo=javascript&logoColor=F7DF1E)
 ![Node.js](https://img.shields.io/badge/Node.js-424242?&logo=nodedotjs&logoColor=339933)
-![express](https://img.shields.io/badge/express_5.1.0-424242?&logo=express&logoColor=white)
-![better-sqlite3](https://img.shields.io/badge/better--sqlite3_12.4.1-424242?)
-![cors](https://img.shields.io/badge/cors_2.8.5-424242?)
-![dotenv](https://img.shields.io/badge/dotenv_17.2.3-424242?)
-![helmet](https://img.shields.io/badge/helmet_8.1.0-424242?)
-![express-rate-limit](https://img.shields.io/badge/express--rate--limit_8.1.0-424242?)
+![Express](https://img.shields.io/badge/Express_5.1.0-424242?logo=express&logoColor=white)
+![better-sqlite3](https://img.shields.io/badge/better--sqlite3_12.4.1-424242)
+
+<!-- end:tech-stack -->
+
+![cors](https://img.shields.io/badge/cors_2.8.5-424242)
+![dotenv](https://img.shields.io/badge/dotenv_17.2.3-424242?logo=dotenv)
+![helmet](https://img.shields.io/badge/helmet_8.1.0-424242)
+![express-rate-limit](https://img.shields.io/badge/express--rate--limit_8.1.0-424242)
+![nodemon](https://img.shields.io/badge/nodemon_3.1.10-424242)
 
 <details style="border:1px solid #d4d4d4; border-radius:2px; padding:1rem;">
-<summary><h4 style="display:inline; padding-left:6px;">📦 Dependencies:</h4></summary>
+<summary><h4 style="display:inline; padding-left:6px;">🗃 Dependencies</h4></summary>
 
 ```bash
 npm install express
@@ -49,33 +63,20 @@ npm install helmet
 
 </details>
 
-### ✨ Features
-
-- Full CRUD operations for movies and reviews
-- Foreign key constraints with cascading delete
-- For just created DB automatically seeding of initial data
-- Input validation and error handling
-- Rate limiting and security headers
-- Config-based environment control (`NODE_ENV`, `.env`)
-
-### 👩‍💻 Author
-
-**FjellFilm API** – created for a course project.  
-Clean code, pragmatic architecture, and a tiny sprinkle of Scandinavian drama.
+---
 
 <details>
 <summary><h3 style="display:inline" >⚙️ Installation & Setup</h3></summary>
 
 ```js
-// Install dependencies
-npm install
-
-// Start the server
-npm run dev
+npm install // Install dependencies
+npm run dev // Start the server
 ```
 
 - **The server runs on:** `http://localhost:4200`
-- **Database:** Each time the server starts, `database.js` checks if the tables exist.
+- **Database:**
+
+  - Each time the server starts, `database.js` checks if the tables exist.
 
   - If the tables were just created (i.e., the database is new), `seed.js` is automatically run to populate initial data.
 
